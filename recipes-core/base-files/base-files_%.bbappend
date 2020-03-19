@@ -2,6 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI += "file://80-eth_ext.link \
             file://81-eth_int.link \
+            file://82-eth_ext.link \
             file://br0.netdev \
             file://lan-bridge.network \
             "

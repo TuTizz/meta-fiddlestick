@@ -1,6 +1,6 @@
 # Bridge 2 ports into one.
 [Match]
-Name=eth_int eth_ext
+Name=eth_int_dlink eth_ext_rasp
 
 [Network]
 Bridge=br0
