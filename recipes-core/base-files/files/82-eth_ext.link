@@ -1,6 +1,6 @@
 [Match]
 Property=ID_MODEL_ID=7800 ID_VENDOR_ID=0424
 [Link]
-Description=Plateform Ethernet Port (formely external interface) Raspberry native interface
+Description=Plateform Ethernet Port (formely external interface) Raspberry native interface (Model RPI 3 B+)
 MACAddressPolicy=persistent 
 Name=eth_ext_rasp
