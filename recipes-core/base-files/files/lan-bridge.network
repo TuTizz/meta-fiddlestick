@@ -1,0 +1,6 @@
+# Bridge 2 ports into one.
+[Match]
+Name=eth_int eth_ext
+
+[Network]
+Bridge=br0

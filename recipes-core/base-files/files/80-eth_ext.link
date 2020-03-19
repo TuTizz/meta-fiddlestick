@@ -1,0 +1,6 @@
+[Match]
+Property=ID_MODEL_ID=ec00 ID_VENDOR_ID=0424
+[Link]
+Description=Plateform Ethernet Port  (formelly external interface)
+MACAddressPolicy=persistent 
+Name=eth_ext

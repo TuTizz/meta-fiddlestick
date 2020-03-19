@@ -1,0 +1,6 @@
+[Match]
+Property=ID_MODEL_ID=1a02 ID_VENDOR_ID=2001
+[Link]
+Description=Inernal Ethernet Port
+MACAddressPolicy=persistent 
+Name=eth_int
