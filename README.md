@@ -7,22 +7,24 @@ Please see the corresponding sections below for details.
 
 Dependencies
 ============
-
-BB_VERSION           = "1.44.0"                                                                                   
-BUILD_SYS            = "x86_64-linux"                                                                             
-NATIVELSBSTRING      = "universal"                                                                                
-TARGET_SYS           = "aarch64-poky-linux"                                                                       
-MACHINE              = "raspberrypi3-64"                                                                          
-DISTRO               = "poky"                                                                                     
-DISTRO_VERSION       = "3.0.2"                                                                                    
-TUNE_FEATURES        = "aarch64 cortexa53 crc"                                                                    
-TARGET_FPU           = ""                                                                                         
-meta                                                                                                              
-meta-poky                                                                                                         
-meta-yocto-bsp       = "zeus:04d71b42e7323087b945e9c507337c1cfb54f48b"                                            
-meta-raspberrypi     = "master:ac5e346167717021d232eb51018a7ddf5efa8504"                                          
-meta-fiddlestick     = "zeus:04d71b42e7323087b945e9c507337c1cfb54f48b" 
-
+Build Configuration:
+BB_VERSION           = "1.44.0"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-poky-linux"
+MACHINE              = "raspberrypi3-64"
+DISTRO               = "poky-fiddlestick"
+DISTRO_VERSION       = "1.0"
+TUNE_FEATURES        = "aarch64 cortexa53 crc"
+TARGET_FPU           = ""
+meta                 
+meta-poky            
+meta-yocto-bsp       = "zeus:f9ef210967ab34168d4a24930987dc0731baf56f"
+meta-oe              
+meta-python          
+meta-networking      = "zeus:bb65c27a772723dfe2c15b5e1b27bcc1a1ed884c"
+meta-raspberrypi     = "zeus:d17588fe8673b794b589335a753f4c1c90e12f88"
+meta-fiddlestick     = "master:1169ae4718b5bed38af2de04a87c7c94dcae0450"
 
 Patches
 =======

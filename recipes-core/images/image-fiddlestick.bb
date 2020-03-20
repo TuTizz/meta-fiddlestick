@@ -2,10 +2,10 @@ SUMMARY = "A small image for a switch filtering based on Raspberry."
 
 IMAGE_INSTALL = "packagegroup-core-boot \
 ${CORE_IMAGE_EXTRA_INSTALL} \
-iptables \
-iproute2 \
+nftables \
 watchdog \
 "
+#iproute2 
 
 IMAGE_FEATURES += "ssh-server-dropbear"
 
