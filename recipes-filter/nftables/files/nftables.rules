@@ -1,0 +1,24 @@
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet filter {
+	chain input {
+		type filter hook input priority 0;
+        policy drop;
+        tcp dport 22 accept;
+	}
+	chain forward {
+		type filter hook forward priority 0;
+        policy drop;
+	}
+	chain output {
+		type filter hook output priority 0;
+        policy drop;
+	}
+}
+# hook : input forward output raw
+# nft add rule inet filter input counter log drop # log unwanted inputs
+# https://wiki.nftables.org/wiki-nftables/index.php/Main_Page
+# https://connect.ed-diamond.com/GNU-Linux-Magazine/GLMFHS-093/Filtrez-votre-reseau-avec-Nftables 
+
