@@ -63,6 +63,7 @@ kernel-module-nf-conntrack-netlink \
 kernel-module-nf-conntrack-broadcast \
 kernel-module-nf-nat-tftp \
 kernel-module-nf-log-common \
+kernel-module-nf-tables \
 "
 
 IMAGE_INSTALL += " kernel-module-asix kernel-module-ax88179-178a "
