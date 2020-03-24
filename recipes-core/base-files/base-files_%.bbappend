@@ -5,6 +5,7 @@ SRC_URI += "file://80-eth_ext.link \
             file://82-eth_ext.link \
             file://br0.netdev \
             file://lan-bridge.network \
+            file://system.conf \
             "
 
 do_install_append() {
@@ -15,6 +16,9 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/*.network ${D}${sysconfdir}/systemd/network/
     install -m 0644 ${WORKDIR}/*.link ${D}${sysconfdir}/systemd/network/
     install -m 0644 ${WORKDIR}/*.netdev ${D}${sysconfdir}/systemd/network/
+
+    # Add watchdog configuration
+    install -m 0644 ${WORKDIR}/system.conf ${D}${sysconfdir}/systemd/
 }
 
 
