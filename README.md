@@ -1,4 +1,5 @@
 # meta-fiddlestick
+
 Filter switch based on Raspberry
 
 This README file contains information on the contents of the meta-fiddlestick layer.
@@ -54,8 +55,10 @@ Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
 Table of Contents
 =================
 
-  I. Adding the meta-fiddlestick layer to your build
+ I. Adding the meta-fiddlestick layer to your build
+ 
  II. Misc
+
  III. Run
 
 I. Adding the meta-fiddlestick layer to your build
@@ -67,7 +70,9 @@ II. Misc
 ========
 
 source oe-init-build-env
+
 Copy meta-fiddlestick/conf/bblayers.conf build/conf/
+
 Copy meta-fiddlestick/conf/local.conf build/conf/
 
 
@@ -75,6 +80,3 @@ III. Run
 ========
 bitbake image-fiddlestick
 
-
-
---- replace with specific information about the meta-fiddlestick layer ---
