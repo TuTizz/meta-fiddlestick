@@ -1,16 +1,6 @@
 SUMMARY = "A small image for a switch filtering based on Raspberry."
 
-IMAGE_INSTALL = "packagegroup-core-boot \
-${CORE_IMAGE_EXTRA_INSTALL} \
-nft-custom \
-ssh-keys-custom \
-"
-
-ROOT_PASSWORD ?= ""
-
-inherit extrausers
-EXTRA_USERS_PARAMS = "usermod -P ${ROOT_PASSWORD} root;"
-#EXTRA_USERS_PARAMS = "usermod -P test root;"
+inherit core-image extrausers
 
 IMAGE_FEATURES += "ssh-server-openssh"
 
@@ -18,18 +8,24 @@ IMAGE_LINGUAS = " "
 
 LICENSE = "MIT"
 
-inherit core-image
 
 IMAGE_ROOTFS_SIZE ?= "8192"
 IMAGE_ROOTFS_EXTRA_SPACE_append = "${@bb.utils.contains("DISTRO_FEATURES", "systemd", " + 4096", "" ,d)}"
+
+
+IMAGE_INSTALL = "packagegroup-core-boot \
+${CORE_IMAGE_EXTRA_INSTALL} \
+nft-custom \
+ssh-keys-custom \
+"
+
 #To avoid  systemd-networkd[149]: [[0;1;38;5;185m[[0;1;39m[[0;1;38;5;185mbr0: netdev could not be created: Operation not supported[[0m
 # for bridge setup,  bridge module is required by systemd
 IMAGE_INSTALL += " kernel-module-bridge "
+
 # Add all modules related to netfilter only for ipv4
 # find ./tmp/deploy/rpm/raspberrypi3_64/ \( -name "kernel-module-nf-*.rpm" -o -name "kernel-module-nfnetlink-*.rpm" \) \
 #         ! -name "kernel-module*-ipv6*.rpm" -printf "%f\n"  | sed -e 's/-4.19.108.*/ \\/g'
-
-
 IMAGE_INSTALL += "kernel-module-nfnetlink-log \
 kernel-module-nf-conntrack-tftp \
 kernel-module-nf-nat-ftp \
@@ -72,3 +68,14 @@ kernel-module-nf-tables \
 "
 
 IMAGE_INSTALL += " kernel-module-asix kernel-module-ax88179-178a "
+
+
+ROOT_PASSWORD ?= ""
+
+EXTRA_USERS_PARAMS = "usermod -P ${ROOT_PASSWORD} root;"
+
+
+python () {
+    if d.getVar('ROOT_PASSWORD') == '':
+        bb.fatal(" ERROR: ROOT_PASSWORD variable is set to invalid value : \"\". Change your local.conf to put ROOT_PASSWORD=\"xxxx\".")
+}
