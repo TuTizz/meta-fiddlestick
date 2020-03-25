@@ -17,4 +17,22 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/*.netdev ${D}${sysconfdir}/systemd/network/
 }
 
+pkg_postinst_ontarget_${PN}() {
+
+
+for dev in /sys/class/net/*;
+do
+	if [ ! -e $dev/device/uevent ]; then
+		continue;
+	fi 
+	grep  "PRODUCT=424/ec00/200"  $dev/device/uevent
+	if [ "$?" =  "0" ]; then
+		echo "MACAddress=$(cat $dev/address)" >> ${sysconfdir}/systemd/network/br0.netdev
+	fi 
+	grep  "PRODUCT=2001/1a02/200"  $dev/device/uevent
+	if [ "$?" =  "0" ]; then
+                echo "MACAddress=$(cat $dev/address)" >> ${sysconfdir}/systemd/network/br0.netdev
+        fi
+done
+}
 
