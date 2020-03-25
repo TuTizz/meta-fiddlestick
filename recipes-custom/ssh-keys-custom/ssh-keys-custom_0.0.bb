@@ -1,21 +1,22 @@
-LICENSE = "MIT"
+LICENSE = "CLOSED"
 
 AUTHORIZED_KEYS ?= ""
-
+RDEPENDS_{PN}="openssh"
 FILES_${PN} += " \
     ${ROOT_HOME}/.ssh \
     ${ROOT_HOME}/.ssh/authorized_keys \
 "
 
-do_install_append() {
-	bbnote "AUTHORIZED_KEYS is set to invalid value : \"${AUTHORIZED_KEYS} \" "
 
-	if [ -e "${AUTHORIZED_KEYS}" ]; then 
-		install -d ${D}${ROOT_HOME}/.ssh
-		install -m 0644 ${AUTHORIZED_KEYS} ${D}${ROOT_HOME}/.ssh/authorized_keys
-	else
-		bbfatal "ERROR: AUTHORIZED_KEYS variable is set to invalid value file does not exist : \"${AUTHORIZED_KEYS} \". Change your local.conf to put AUTHORIZED_KEYS=\"<file>\" "
-	fi
-	
+python () {
+    if d.getVar('AUTHORIZED_KEYS') == '' or not os.path.isfile(d.getVar('AUTHORIZED_KEYS')) :
+        bb.fatal("ERROR: AUTHORIZED_KEYS variable is set to invalid value file does not exist : %s. Change your local.conf to put AUTHORIZED_KEYS=\"<file>\" ." % d.getVar('AUTHORIZED_KEYS'))
+    else :
+        d.setVar('SRC_URI', "file://" + d.getVar('AUTHORIZED_KEYS'))
+}
+
+do_install() {
+    install -d ${D}${ROOT_HOME}/.ssh
+    install -m 0644 ${AUTHORIZED_KEYS} ${D}${ROOT_HOME}/.ssh/authorized_keys
 }
 
