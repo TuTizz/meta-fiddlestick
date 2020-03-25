@@ -2,8 +2,15 @@ SUMMARY = "A small image for a switch filtering based on Raspberry."
 
 IMAGE_INSTALL = "packagegroup-core-boot \
 ${CORE_IMAGE_EXTRA_INSTALL} \
-nftables \
+nft-custom \
+ssh-keys-custom \
 "
+
+ROOT_PASSWORD ?= ""
+
+inherit extrausers
+EXTRA_USERS_PARAMS = "usermod -P ${ROOT_PASSWORD} root;"
+#EXTRA_USERS_PARAMS = "usermod -P test root;"
 
 IMAGE_FEATURES += "ssh-server-openssh"
 

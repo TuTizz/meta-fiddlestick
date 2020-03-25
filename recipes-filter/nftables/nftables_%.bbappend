@@ -1,15 +1,12 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
+NFTABLES_CONF_FILE ?= ""
+
 inherit systemd
 
 SRC_URI += "file://nftables.service \
-            file://nftables.rules \
             "
 do_install_append() {
-
-        install -d ${D}${sysconfdir}/nftables
-        install -m 0644 ${WORKDIR}/nftables.rules ${D}${sysconfdir}/nftables
-
         install -d ${D}${systemd_system_unitdir}
         install -m 0644 ${WORKDIR}/nftables.service ${D}${systemd_system_unitdir}
 

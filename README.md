@@ -75,8 +75,16 @@ Copy meta-fiddlestick/conf/bblayers.conf build/conf/
 
 Copy meta-fiddlestick/conf/local.conf build/conf/
 
-
 III. Run
 ========
 bitbake image-fiddlestick
 
+IV. What have been done so far
+==============================
+ssh : to allow your computer to access your device over ssh, AUTHORIZED_KEYS variable have to be set to a valid value in your local.conf. AUTHORIZED_KEYS="/home/myid/myvar/mypublickeys"
+
+nftables : to customize the nftables rules that will be applied, you have to create your own rules and the NFTABLES_CONF_FILE variable have to be set to a valid value in your local.conf. NFTABLES_CONF_FILE="/home/myid/myvar/mynftablesconf"
+
+rootpasswd : you may want to init your root's passwd into your local.conf. ROOT_PASSWORD="myrootpasswd", if not it will be empty.
+
+watchdog : watchdog is activated forkbomb if you want to test it : root@raspberrypi3-64:~# a(){ a|a& };a

@@ -6,7 +6,7 @@ table inet filter {
 	chain input {
 		type filter hook input priority 0;
         policy drop;
-        tcp dport 22 accept;
+#        tcp dport 22 accept;
 	}
 	chain forward {
 		type filter hook forward priority 0;
