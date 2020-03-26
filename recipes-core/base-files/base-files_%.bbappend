@@ -25,14 +25,18 @@ do
 	if [ ! -e $dev/device/uevent ]; then
 		continue;
 	fi 
-	grep  "PRODUCT=424/ec00/200"  $dev/device/uevent
-	if [ "$?" =  "0" ]; then
-		echo "MACAddress=$(cat $dev/address)" >> ${sysconfdir}/systemd/network/br0.netdev
-	fi 
-	grep  "PRODUCT=2001/1a02/200"  $dev/device/uevent
+#	grep  "PRODUCT=424/ec00/200"  $dev/device/uevent
+#	if [ "$?" =  "0" ]; then
+#		echo "MACAddress=$(cat $dev/address)" >> ${sysconfdir}/systemd/network/br0.netdev
+#	fi 
+#	grep  "PRODUCT=2001/1a02/200"  $dev/device/uevent
+#	if [ "$?" =  "0" ]; then
+#                echo "MACAddress=$(cat $dev/address)" >> ${sysconfdir}/systemd/network/br0.netdev
+#    fi
+    grep  "DRIVER=lan78xx"  $dev/device/uevent
 	if [ "$?" =  "0" ]; then
                 echo "MACAddress=$(cat $dev/address)" >> ${sysconfdir}/systemd/network/br0.netdev
-        fi
+    fi
 done
 }
 

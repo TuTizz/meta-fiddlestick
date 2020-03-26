@@ -88,3 +88,5 @@ nftables : to customize the nftables rules that will be applied, you have to cre
 rootpasswd : you may want to init your root's passwd into your local.conf. ROOT_PASSWORD="myrootpasswd", if not it will be empty.
 
 watchdog : watchdog is activated forkbomb if you want to test it : root@raspberrypi3-64:~# a(){ a|a& };a
+
+@mac bridge : le bridge prend l'@mac de la raspberry
