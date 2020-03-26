@@ -17,6 +17,15 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/*.netdev ${D}${sysconfdir}/systemd/network/
 }
 
+
+FILES_${PN} += " \
+    ${sysconfdir}/systemd/network/80-eth_ext.link \
+    ${sysconfdir}/systemd/network/81-eth_int.link \
+    ${sysconfdir}/systemd/network/82-eth_ext.link \
+    ${sysconfdir}/systemd/network/br0.netdev \
+    ${sysconfdir}/systemd/network/lan-bridge.network \
+"
+
 pkg_postinst_ontarget_${PN}() {
 
 
