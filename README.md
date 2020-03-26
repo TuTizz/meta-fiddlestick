@@ -89,4 +89,6 @@ rootpasswd : you may want to init your root's passwd into your local.conf. ROOT_
 
 watchdog : watchdog is activated forkbomb if you want to test it : root@raspberrypi3-64:~# a(){ a|a& };a
 
-@mac bridge : le bridge prend l'@mac de la raspberry
+@mac br0 = @mac Raspberry
+
+snmp : is now available, basic OID exposed
