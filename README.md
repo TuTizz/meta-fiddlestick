@@ -92,3 +92,5 @@ watchdog : watchdog is activated forkbomb if you want to test it : root@raspberr
 @mac br0 = @mac Raspberry
 
 snmp : is now available, basic OID exposed
+
+cvecheck : is now checking cve on each build, it's up to you to read the log under tmp/deploy/images/*.cve
