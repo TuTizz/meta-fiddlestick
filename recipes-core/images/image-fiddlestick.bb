@@ -19,7 +19,10 @@ nft-custom \
 ssh-keys-custom \
 net-snmp-server-snmpd \
 net-snmp-mibs \
+inotify-tools \
 "
+
+
 
 #To avoid  systemd-networkd[149]: [[0;1;38;5;185m[[0;1;39m[[0;1;38;5;185mbr0: netdev could not be created: Operation not supported[[0m
 # for bridge setup,  bridge module is required by systemd

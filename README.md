@@ -44,6 +44,8 @@ meta-raspberrypi     = "zeus:d17588fe8673b794b589335a753f4c1c90e12f88"
 
 meta-fiddlestick     = "master:1169ae4718b5bed38af2de04a87c7c94dcae0450"
 
+meta-mender-core     = "zeus-next:41845a5eca41b69bd2499022246f0005b084722d"
+
 Patches
 =======
 
@@ -94,3 +96,22 @@ watchdog : watchdog is activated forkbomb if you want to test it : root@raspberr
 snmp : is now available, basic OID exposed
 
 cvecheck : is now checking cve on each build, it's up to you to read the log under tmp/deploy/images/*.cve
+
+mender.io : to install server : https://docs.mender.io/1.6/administration/production-installation
+
+for the device : 
+git clone https://github.com/mendersoftware/meta-mender
+first of all you have to change meta-mender-core/conf/layer.conf
+
+diff --git a/meta-mender-core/conf/layer.conf b/meta-mender-core/conf/layer.conf
+index eb3728d..0762b91 100644
+--- a/meta-mender-core/conf/layer.conf
++++ b/meta-mender-core/conf/layer.conf
+@@ -17,5 +17,5 @@ BBFILE_PRIORITY_mender = "6"
+ 
+ INHERIT += "mender-setup"
+ 
+-LAYERSERIES_COMPAT_mender = "warrior"
++LAYERSERIES_COMPAT_mender = "warrior zeus"
+ LAYERDEPENDS_mender = "core"
+
